@@ -1,0 +1,39 @@
+import uuid
+import time
+import logging
+from locust import HttpLocust, TaskSet, task
+
+logger = logging.getLogger(__name__)
+
+class MetricsTaskSet(TaskSet):
+    _deviceid = None
+
+    def on_start(self):
+        self._deviceid = str(uuid.uuid4())
+
+    @task(1)
+    def login(self):
+        time_start = time.time()
+        response = self.client.get("/")
+        time_end = time.time()
+        logger.info("Response - URL: {url}. Status code: {status}. "
+                    "Latency: {duration}".format(url=response.url,
+                                                 status=response.status_code,
+                                                 duration=round(time_end - time_start, 3)))
+
+
+class MetricsLocust(HttpLocust):
+    task_set = MetricsTaskSet
+    min_wait = 1000
+    max_wait = 2000
+
+#another solution
+#wait_time = between(5, 15)
+
+class MetricsLocust(HttpLocust):
+    task_set = MetricsTaskSet
+
+
+
+
+
