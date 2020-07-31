@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: locust
-          image: asia.gcr.io/machine-learning-project-101/locust:latest
+          image: asia.gcr.io/TTMnist/locust:latest
           imagePullPolicy: Always
           env:
             - name: LOCUST_MODE
@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: locust
-          image: asia.gcr.io/machine-learning-project-101/locust:latest
+          image: asia.gcr.io/TTMnist/locust:latest
           imagePullPolicy: Always
           env:
             - name: LOCUST_MODE
