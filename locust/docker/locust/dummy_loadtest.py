@@ -14,7 +14,7 @@ class MetricsTaskSet(TaskSet):
     @task(1)
     def login(self):
         time_start = time.time()
-        response = self.client.get("/")
+        response = self.client.get('/')
         time_end = time.time()
         logger.info("Response - URL: {url}. Status code: {status}. "
                     "Latency: {duration}".format(url=response.url,
