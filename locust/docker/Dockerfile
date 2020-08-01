@@ -18,4 +18,4 @@ RUN chmod 755 run.sh
 
 # Start Locust using LOCUS_OPTS environment variable
 ENTRYPOINT ["run.sh"]
-CMD []
+
